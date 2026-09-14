@@ -16,6 +16,6 @@ When a future audience looks at my GitHub, I hope they immediately feel a sense 
 <div align="center">
   <img src="images/09142026-JournalEntry_1.png" alt="Website Prototype Screenshot" width="50%" />
   
-  *The website of Shields.io*
+  *My README on Git Page*
 </div>
 </details>
