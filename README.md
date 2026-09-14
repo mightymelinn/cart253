@@ -27,7 +27,7 @@ Hi! I'm Melinn, a first-year Computation Arts student specializing in game desig
 ---
 
 ### 🔗 Useful Links
-* 📓 **[Reflective Journal](journal.md)** — A documentation of my learning process.
+* 📓 **[Reflective Journal](Journal.md)** — A documentation of my learning process.
 * 🎮 **[Personal Portfolio](https://sites.google.com/view/melinnportfolio/home)** — Explore my broader game design projects.
 * 🌐 **[CART253 Homepage](https://pippinbarr.com/cart253/)** — The main course website and syllabus.
 
