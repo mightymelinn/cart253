@@ -36,11 +36,11 @@ Hi! I'm Melinn, a first-year Computation Arts student specializing in game desig
 ### 🛠️ Course Prototypes
 *This is a chronological archive of my experiments. More coming soon!*
 
-| ✧ Project Name ✧ | Core Medium | Programming Focus | Status |
-| :--- | :---: | :--- | :---: |
-| **[01. Coming Soon](#)** | TBD | TBD | ⚪ Not Started |
-| **[02. Coming Soon](#)** | TBD | TBD | ⚪ Not Started |
-| **[03. Coming Soon](#)** | TBD | TBD | ⚪ Not Started |
+| ✧ Project Name ✧ | Focus | Status |
+| :--- | :--- | :---: |
+| **[1](#)** | TBD | ⚪ Not Started |
+| **[2](#)** | TBD | ⚪ Not Started |
+| **[3](#)** | TBD | ⚪ Not Started |
 
 <br>
 <div align="center">
