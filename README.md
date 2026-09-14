@@ -1,8 +1,8 @@
 <div align="center">
 
-# ✧ CART 253-AA: CREATIVE COMPUTATION I ✧
+# <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Audiowide&size=36&duration=2500&pause=1000&color=1F6D90&width=960&height=100&lines=%E2%9C%A7+CART+253-AA%3A+CREATIVE+COMPUTATION+I+%E2%9C%A7" alt="Typing SVG" /></a>
 
-<img src="images/Github_Project_banner.png" alt="Project Banner" width="100%" />
+<img src="images/Github_Project_banner.png" alt="Project Banner" width="80%" />
 
 *This repository is for collecting my works from CART253 for Fall 2026. By the way, I am developing a psychological horror game on Steam called I Against Me! PLEASE wishlist it!*
 
