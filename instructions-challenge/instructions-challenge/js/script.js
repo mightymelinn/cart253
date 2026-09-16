@@ -43,12 +43,26 @@ function draw() {
   fill(255, 255, 150); 
   rect(140, 260, 20, 20);
 
-  // A bird
+  // Birds
   fill(10);
   ellipse(400, 150, 40, 10); 
   ellipse(400, 150, 10, 15); 
 
-  // Human
+  fill(10);
+  ellipse(420, 170, 35, 7); 
+  ellipse(420, 170, 7, 12); 
+
+  fill(10);
+  ellipse(360, 170, 45, 15); 
+  ellipse(360, 170, 15, 20); 
+
+  // Humen
   fill(10);
   ellipse(350, 310, 15, 15); 
   rect(345, 315, 10, 25); 
+
+  fill(10);
+  ellipse(370, 325, 12, 12);
+  ellipse(370, 335, 8, 15); 
+
+}
