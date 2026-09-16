@@ -1,4 +1,4 @@
-# The Painting I Did When I Was 7
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Lexend&size=48&duration=3000&pause=1000&color=46259C&width=800&height=75&lines=The+Painting+I+Did+When+I+Was+7" alt="Typing SVG" /></a>
 
 By Melinn (Supitcha Chailom)
 
