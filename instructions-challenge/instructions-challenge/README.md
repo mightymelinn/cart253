@@ -10,7 +10,8 @@ This project is an exploration designed to build technical familiarity with p5.j
 
 ## Screenshots
 
-![Night sky landscape](images/InstructionChallenge_1.png) 
+<img width="600" height="400" alt="InstructionChallenge_1" src="https://github.com/user-attachments/assets/980b04a1-562a-43be-899d-7dce9b4d24e9" />
+
 
 ## Attribution
 
