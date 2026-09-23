@@ -10,10 +10,15 @@
 const cellSize = 12;
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
-*/
+ * Set up the canvas.
+ */
 function setup() {
-
+  createCanvas(600, 400);
+  textFont("monospace");
+  textSize(12);
+  textStyle(BOLD);
+  textAlign(CENTER, CENTER);
+  noLoop(); //
 }
 
 
