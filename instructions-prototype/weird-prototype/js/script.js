@@ -1,12 +1,16 @@
 /**
- * Title of Project
- * Author Name
+ * Title of Project: Ripple FX
+ * Author Name: Melinn (Supitcha Chailom)
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
- */
+ * This is my attempt to try ripple fx. I found this tutorial on YouTube and I thought it was really cool.
 
 "use strict";
+
+//Set up the ripple
+let rippleX = 0;
+let rippleY = 0;
+let rippleSize = 0;
+let rippleColour;
 
 /**
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
