@@ -1,12 +1,13 @@
 /**
- * Title of Project
- * Author Name
+ * Title of Project: CART211
+ * Author Name: Melinn (Supitcha Chailom)
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * One of assignments in CART211 is to create a binary art piece.
  */
 
 "use strict";
+
+const cellSize = 12;
 
 /**
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
