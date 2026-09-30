@@ -30,8 +30,7 @@ I was a bit busy this week, so I didn't have time to explore the new library as 
 
 <br>
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/130c5c07-c60c-4eb7-984f-aefd26b47e52" />" alt="First Time Using Three.js" width="50%" />
+  <img src="https://github.com/user-attachments/assets/130c5c07-c60c-4eb7-984f-aefd26b47e52" alt="First Time Using Three.js" width="50%" />
   
-  *My README on Git Page*
 </div>
 </details>
