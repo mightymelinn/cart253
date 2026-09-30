@@ -11,8 +11,11 @@ document.body.appendChild(renderer.domElement);
 // add cube
 const cube = new THREE.Mesh(
   new THREE.BoxGeometry(),
-  new THREE.MeshNormalMaterial()
+  new THREE.MeshStandardMaterial({color: 'red'})
 );
+scene.add(new THREE.DirectionalLight('pink', 3));
+scene.add(new THREE.AmbientLight('white', 0.5
+));
 scene.add(cube);
 camera.position.z = 3;
 //make a cube spinning
