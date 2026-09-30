@@ -19,3 +19,19 @@ When a future audience looks at my GitHub, I hope they immediately feel a sense 
   *My README on Git Page*
 </div>
 </details>
+
+<details>
+<summary><b>Entry 2: September 29, 2026</b></summary>
+<br>
+
+## September 29, 2026
+
+I was a bit busy this week, so I didn't have time to explore the new library as I expected, but I learned how to download the library from [YouTube](https://youtu.be/kduBV0OhrII). I found this guy who explained it very well. I played around a bit and created a spinning cube and a draggable cylinder. I hope I can spend more time soon starting to learn how to control the camera movement (to make it like an FPS) and export scenes from Unreal Engine 5.
+
+<br>
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/130c5c07-c60c-4eb7-984f-aefd26b47e52" />" alt="First Time Using Three.js" width="50%" />
+  
+  *My README on Git Page*
+</div>
+</details>
