@@ -33,16 +33,16 @@ Hi! I'm Melinn, a first-year Computation Arts student specializing in game desig
 
 ---
 
-### 🛠️ Course Prototypes
-*This is a chronological archive of my experiments. More coming soon!*
+### 🛠️ Course Prototype
 
-| ✧ Project Name ✧ | Focus | Status |
-| :--- | :--- | :---: |
-| **[1](#)** | TBD | ⚪ Not Started |
-| **[2](#)** | TBD | ⚪ Not Started |
-| **[3](#)** | TBD | ⚪ Not Started |
+| Attribute | Details |
+| :--- | :--- |
+| **Project** | **[THREE.JS WEBSITE](https://mightymelinn.github.io/cart253/)** |
+| **Status** | 🟢 Active Development |
+| **Latest Update** | Added basic geometry (spinning cube, draggable cylinder) |
+| **Planned** | Implement FPS camera movement and UE5 scene exports |
 
-<br>
+
 <div align="center">
   <i>I only use Light mode.</i>
 </div>
