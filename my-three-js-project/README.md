@@ -1,8 +1,8 @@
-# I Against Me: Web Walking Sim
+# I Against Me: Web Walking Sim 👻
 
 A browser-based first-person horror walking sim set in the world of **[I Against Me](https://store.steampowered.com/app/3803600/I_Against_Me/)**, built with **[three.js](https://threejs.org/)** for CART 253 (Fall 2026).
 
-▶️ **Play:** [mightymelinn.github.io/cart253](https://mightymelinn.github.io/cart253/)
+[![Play on GitHub Pages](https://img.shields.io/badge/Play-GitHub_Pages-black?style=for-the-badge&logo=github)](https://mightymelinn.github.io/cart253/)
 
 ---
 
@@ -28,11 +28,11 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 
 | Week | Topic | Features Added | How It Uses the Concept |
 |---|---|---|---|
-| Oct 5 | Events | Walk & look around, click to pick up an object | Keyboard, mouse, and click events |
-| Oct 19 | Functions | Import the house from UE5 (FBX), scripted easy events (light flicker + sound) | Model loading and scares written as reusable functions |
-| Oct 26 | Arrays | 3 items + progress UI, one event tied to each item | Items and scares stored in arrays |
-| Nov 2 | Loops | Enemy follows the player, heartbeat gets louder as it gets closer | Game loop updates every frame |
-| Nov 9 | Data | Item notes & event text from JSON, ending letter + wishlist + email signup | Loading content from external data |
+| Oct 5 | 	⏱ Events | Walk & look around, click to pick up an object | Keyboard, mouse, and click events |
+| Oct 19 | ☎️ Functions | Import the house from UE5 (FBX), scripted easy events (light flicker + sound) | Model loading and scares written as reusable functions |
+| Oct 26 | 🔢Arrays | 3 items + progress UI, one event tied to each item | Items and scares stored in arrays |
+| Nov 2 | 🔁 Loops | Enemy follows the player, heartbeat gets louder as it gets closer | Game loop updates every frame |
+| Nov 9 | 💿 Data | Item notes & event text from JSON, ending letter + wishlist + email signup | Loading content from external data |
 
 ## Polish
 
