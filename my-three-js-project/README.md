@@ -47,6 +47,7 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 
 | Week | Topic | Entry |
 |---|---|---|
+| Sep 29 | Getting started with three.js | [September 29, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#september-29-2026) | 
 | Oct 5 | Events | _coming soon_ |
 | Oct 19 | Functions | _coming soon_ |
 | Oct 26 | Arrays | _coming soon_ |
