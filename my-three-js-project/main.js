@@ -1,14 +1,19 @@
 import * as THREE from 'three';
-import { DragControls } from 'three/addons/controls/DragControls.js';
+import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 
 // set up
 const scene = new THREE.Scene();
+scene.background = new THREE.Color('beige');
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
 camera.position.z = 3;
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
+
+// fps camera control
+const controls = new PointerLockControls(camera, document.body);
+document.addEventListener('click', () => controls.lock());
 
 // add lights
 scene.add(new THREE.DirectionalLight('pink', 3));
@@ -25,11 +30,10 @@ scene.add(cube);
 // add cylinder
 const cylinder = new THREE.Mesh(
   new THREE.CylinderGeometry(1, 1, 2, 32),
-  new THREE.MeshStandardMaterial({color: 'blue'})
+  new THREE.MeshStandardMaterial({ color: 'blue' })
 );
-cylinder .position.set(1, 0, -5);
+cylinder.position.set(1, 0, -5);
 scene.add(cylinder);
-new DragControls([cylinder], camera, renderer.domElement);
 
 //animation
 renderer.setAnimationLoop(() => {
