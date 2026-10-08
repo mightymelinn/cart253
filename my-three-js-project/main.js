@@ -5,7 +5,7 @@ import { PointerLockControls } from 'three/addons/controls/PointerLockControls.j
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('beige');
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
-camera.position.z = 3;
+camera.position.set(0, 1.6, 3);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(innerWidth, innerHeight);
@@ -19,12 +19,20 @@ document.addEventListener('click', () => controls.lock());
 scene.add(new THREE.DirectionalLight('pink', 3));
 scene.add(new THREE.AmbientLight('white', 0.5));
 
+// add floor
+const floor = new THREE.Mesh(
+  new THREE.BoxGeometry(20, 0.1, 20),
+  new THREE.MeshStandardMaterial({ color: 'gray' })
+);
+floor.position.y = -0.05;
+scene.add(floor);
+
 // add cube
 const cube = new THREE.Mesh(
   new THREE.BoxGeometry(),
   new THREE.MeshStandardMaterial({color: 'red'})
 );
-cube. position.x = -0.8;
+cube.position.set(-0.8, 0.5, 0);
 scene.add(cube);
 
 // add cylinder
@@ -32,7 +40,7 @@ const cylinder = new THREE.Mesh(
   new THREE.CylinderGeometry(1, 1, 2, 32),
   new THREE.MeshStandardMaterial({ color: 'blue' })
 );
-cylinder.position.set(1, 0, -5);
+cylinder.position.set(1, 1, -5);
 scene.add(cylinder);
 
 //animation
