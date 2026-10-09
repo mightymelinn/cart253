@@ -15,6 +15,11 @@ document.body.appendChild(renderer.domElement);
 const controls = new PointerLockControls(camera, document.body);
 document.addEventListener('click', () => controls.lock());
 
+// keyboard controls
+const keys = {};
+addEventListener('keydown', (e) => keys[e.code] = true);
+addEventListener('keyup', (e) => keys[e.code] = false);
+
 // add lights
 scene.add(new THREE.DirectionalLight('pink', 3));
 scene.add(new THREE.AmbientLight('white', 0.5));
@@ -44,7 +49,18 @@ cylinder.position.set(1, 1, -5);
 scene.add(cylinder);
 
 //animation
-renderer.setAnimationLoop(() => {
+const speed = 3; // units per second
+let last = 0;
+
+renderer.setAnimationLoop((time) => {
+  const step = Math.min((time - last) / 1000, 0.1) * speed;
+  last = time;
+
+  if (keys.KeyW) controls.moveForward(step);
+  if (keys.KeyS) controls.moveForward(-step);
+  if (keys.KeyD) controls.moveRight(step);
+  if (keys.KeyA) controls.moveRight(-step);
+
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
   renderer.render(scene, camera);
