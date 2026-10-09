@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // set up
 const scene = new THREE.Scene();
@@ -48,6 +49,11 @@ const cylinder = new THREE.Mesh(
 cylinder.position.set(1, 1, -5);
 scene.add(cylinder);
 
+// add moedel from UE5
+new GLTFLoader().load('SM_Emmi.glb', (gltf) => {
+  scene.add(gltf.scene);
+});
+
 //animation
 const speed = 3; // units per second
 let last = 0;
@@ -56,11 +62,13 @@ renderer.setAnimationLoop((time) => {
   const step = Math.min((time - last) / 1000, 0.1) * speed;
   last = time;
 
+  // walking
   if (keys.KeyW) controls.moveForward(step);
   if (keys.KeyS) controls.moveForward(-step);
   if (keys.KeyD) controls.moveRight(step);
   if (keys.KeyA) controls.moveRight(-step);
 
+  // cube spinning
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
   renderer.render(scene, camera);
