@@ -34,3 +34,19 @@ I was a bit busy this week, so I didn't have time to explore the new library as 
   
 </div>
 </details>
+
+<details>
+<summary><b>Entry 3: October 9, 2026</b></summary>
+<br>
+
+## October 9, 2026
+
+I experimented with camera movement in three.js this week, and it actually felt pretty familiar becasue it reminded me of learning game development in Construct 3, which also uses JavaScript to assign functions to all inputs to move in 3D space. Since three.js has a lot of ready-to-use functions, I spent most of my time this week reading through the ones that interested me and could help with my project.
+
+When I started exporting 3D models from Unreal Engine 5, I ran into a problem with the metrics where UE5 works in centimeters, but three.js works in meters. I found a really useful website called [glTF Viewer](https://gltf-viewer.donmccurdy.com/) to help me preview how my 3D models will look in three.js. It helps me catch errors (like forgetting to export textures) before putting them into my code.
+
+<br>
+<div align="center">
+  <img width="50%" alt="Recording 2026-10-09 095654" src="https://github.com/user-attachments/assets/7b73aa08-c516-4734-a62d-dc8502381a2a" />
+</div>
+</details>
