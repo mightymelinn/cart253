@@ -78,5 +78,8 @@ My plan changed a bit from my weekly milestones. I first planned to use a mouse 
 <br>
 <div align="center">
 
+<img width="50%" height="666" alt="20261021-0337-58 4822110" src="https://github.com/user-attachments/assets/d1b66792-10c3-4131-a58e-6d9c25ce8a01" />
+
+
 </div>
 </details>
