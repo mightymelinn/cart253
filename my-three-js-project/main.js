@@ -19,12 +19,22 @@ scene.environmentIntensity = 0.2;
 
 // fps camera control
 const controls = new PointerLockControls(camera, document.body);
-document.addEventListener('click', () => controls.lock());
+document.addEventListener('click', () => {
+  controls.lock();
+  ambience.play();
+});
 
 // keyboard controls
 const keys = {};
 addEventListener('keydown', (e) => keys[e.code] = true);
 addEventListener('keyup', (e) => keys[e.code] = false);
+
+// add sounds
+
+// ambient sound
+const ambience = new Audio('ES_Fluxure - Ethan Sloan');
+ambience.loop = true;
+ambience.volume = 0.3;
 
 // add lights
 const sun = new THREE.DirectionalLight('#fff2e0', 3);
@@ -94,7 +104,7 @@ function hitSomething() {
   return solidBoxes.some((box) => playerBox.intersectsBox(box));
 }
 
-// Pick up object
+// Game mechanics: pick up objects
 class PickHelper {
   constructor() {
     this.raycaster = new THREE.Raycaster();
@@ -120,19 +130,19 @@ class PickHelper {
 }
 
 const pickHelper = new PickHelper();
-const pickables = [cube];
+const pickables = [cube]; // list of my pickable objects
 const screenCenter = new THREE.Vector2(0, 0);
 
 addEventListener('keydown', (e) => {
   if (e.code !== 'KeyE' || !pickHelper.pickedObject) return;
 
-  // pick up: remove the object from the game
+  // remove obj after press E
   const obj = pickHelper.pickedObject;
   pickHelper.pickedObject = null;
   scene.remove(obj);
   pickables.splice(pickables.indexOf(obj), 1);
 
-  // remove its collision too
+  // remove collision press E
   if (obj === cube) solidBoxes.splice(solidBoxes.indexOf(cubeBox), 1);
 });
 
