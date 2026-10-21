@@ -94,6 +94,48 @@ function hitSomething() {
   return solidBoxes.some((box) => playerBox.intersectsBox(box));
 }
 
+// Pick up object
+class PickHelper {
+  constructor() {
+    this.raycaster = new THREE.Raycaster();
+    this.pickedObject = null;
+    this.pickedObjectSavedColor = 0;
+  }
+  pick(normalizedPosition, objects, camera) {
+    if (this.pickedObject) {
+      this.pickedObject.material.emissive.setHex(this.pickedObjectSavedColor);
+      this.pickedObject = null;
+    }
+
+    this.raycaster.setFromCamera(normalizedPosition, camera);
+    
+    const hits = this.raycaster.intersectObjects(objects);
+    
+    if (hits.length && hits[0].distance < 3) {
+      this.pickedObject = hits[0].object;
+      this.pickedObjectSavedColor = this.pickedObject.material.emissive.getHex();
+      this.pickedObject.material.emissive.setHex(0xffffff);
+    }
+  }
+}
+
+const pickHelper = new PickHelper();
+const pickables = [cube];
+const screenCenter = new THREE.Vector2(0, 0);
+
+addEventListener('keydown', (e) => {
+  if (e.code !== 'KeyE' || !pickHelper.pickedObject) return;
+
+  // pick up: remove the object from the game
+  const obj = pickHelper.pickedObject;
+  pickHelper.pickedObject = null;
+  scene.remove(obj);
+  pickables.splice(pickables.indexOf(obj), 1);
+
+  // remove its collision too
+  if (obj === cube) solidBoxes.splice(solidBoxes.indexOf(cubeBox), 1);
+});
+
 // animation
 const speed = 3; // units per second
 let last = 0;
@@ -125,5 +167,9 @@ renderer.setAnimationLoop((time) => {
 
   // update animation
   if (mixer) mixer.update(dt);
+
+  // update highlighted object
+  pickHelper.pick(screenCenter, pickables, camera);
+
   renderer.render(scene, camera);
 });
