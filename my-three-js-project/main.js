@@ -32,7 +32,7 @@ addEventListener('keyup', (e) => keys[e.code] = false);
 // add sounds
 
 // ambient sound
-const ambience = new Audio('ES_Fluxure - Ethan Sloan');
+const ambience = new Audio('ES_Fluxure - Ethan Sloan.mp3');
 ambience.loop = true;
 ambience.volume = 0.3;
 
