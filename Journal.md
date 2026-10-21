@@ -50,3 +50,33 @@ When I started exporting 3D models from Unreal Engine 5, I ran into a problem wi
   <img width="50%" alt="Recording 2026-10-09 095654" src="https://github.com/user-attachments/assets/7b73aa08-c516-4734-a62d-dc8502381a2a" />
 </div>
 </details>
+
+<details>
+<summary><b>Entry 4: October 20, 2026</b></summary>
+<br>
+
+## October 20, 2026
+
+1. I added collision to the objects in my scene so the player can't walk through them. I learned from this [video](https://youtu.be/9H3HPq-BTMo) and the [three.js Box3 documentation](https://threejs.org/docs/#Box3).
+
+**Code changes:** [00553473697ebf511ba6b3a706fba881480be73f](https://github.com/mightymelinn/cart253/commit/00553473697ebf511ba6b3a706fba881480be73f)
+> I created an invisible bounding box for every solid object using `new THREE.Box3().setFromObject(object)`, and a box around the player. Every frame, my function `hitSomething()` checks if the player's box intersects any object's box. Before moving, the game remembers where the player is standing. If the new position doesn't intersect anything, the movement is continued. If it does, the movement is undone, so the player stops at the edge of the object. The video uses collision to change an object's look when touched. I adapted it to block the player's movement. For the spinning cube, I used `cube.geometry.computeBoundingBox()` so the box can follow the cube as it rotates.
+
+2. I added an interaction where the player can pick up the object they are looking at. I used raycasting, based on our discussion last last week.
+
+**Code changes:** [2e0c656d242e55997d9975bfbf8bd130674a0fef](PASTE-COMMIT-LINK-HERE)
+> Every frame, a ray is cast from the center of the screen (where the player is looking). It only checks objects in my pickable list (currently only the cube). If the ray hits it within 3 units, the object is highlighted white. If the player presses E while an object is highlighted, it is removed from everything.
+>
+> I first watched this [video](https://youtu.be/tgwS1xxzc9s), but I was quite confused, so I also used the [three.js interactive cubes example](https://threejs.org/examples/#webgl_interactive_cubes) and the [three.js picking manual](https://threejs.org/manual/#en/picking) as references. I found that I prefer reading documentation over following YouTube videos.
+>
+> Right now, picked-up objects simply disappear, and I don't store any data yet. My idea is to put each collected object into an array, and once the player has collected 3 objects, call an end function. I'll figure out how next week.
+
+My plan changed a bit from my weekly milestones. I first planned to use a mouse click to pick up objects, but I used the E key instead, since it's more common interact key in FPS games. I decided not to import the house layput from UE5 yet, because I still need to make changes to my map. However, I've already learned how to export assets from UE5 as .glb and load them into three.js, so I should be ready when the map is done. I also made the lighting more realistic by adding a directional light (+ shadows). I also added looping ambience sound that starts when the player clicks into the game.
+
+**Next week:** my main.js is getting long and hard to scroll through, so I want to start organizing my code into separate files. 
+
+<br>
+<div align="center">
+
+</div>
+</details>
