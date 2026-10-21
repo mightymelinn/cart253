@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 // set up
 const scene = new THREE.Scene();
@@ -10,7 +11,10 @@ camera.position.set(0, 1.6, 3);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
 document.body.appendChild(renderer.domElement);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment()).texture;
 
 // fps camera control
 const controls = new PointerLockControls(camera, document.body);
@@ -31,6 +35,7 @@ const floor = new THREE.Mesh(
   new THREE.MeshStandardMaterial({ color: 'gray' })
 );
 floor.position.y = -0.05;
+floor.receiveShadow = true;
 scene.add(floor);
 
 // add cube
@@ -39,6 +44,7 @@ const cube = new THREE.Mesh(
   new THREE.MeshStandardMaterial({color: 'red'})
 );
 cube.position.set(-0.8, 0.5, 0);
+cube.castShadow = true;
 scene.add(cube);
 
 // add cylinder
@@ -47,6 +53,7 @@ const cylinder = new THREE.Mesh(
   new THREE.MeshStandardMaterial({ color: 'blue' })
 );
 cylinder.position.set(1, 1, -5);
+cylinder.castShadow = true;
 scene.add(cylinder);
 
 // add collision
@@ -59,6 +66,7 @@ const solidBoxes = [cubeBox, cylinderBox];
 let mixer;
 new GLTFLoader().load('SM_Emmi.glb', (gltf) => {
   scene.add(gltf.scene);
+  gltf.scene.traverse((obj) => obj.castShadow = true);
   solidBoxes.push(new THREE.Box3().setFromObject(gltf.scene));
 
   if (gltf.animations.length) {
