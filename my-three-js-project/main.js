@@ -5,7 +5,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 // set up
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('beige');
+scene.background = new THREE.Color('black');
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
 camera.position.set(0, 1.6, 3);
 
@@ -15,6 +15,7 @@ renderer.shadowMap.enabled = true;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 document.body.appendChild(renderer.domElement);
 scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment()).texture;
+scene.environmentIntensity = 0.2;
 
 // fps camera control
 const controls = new PointerLockControls(camera, document.body);
@@ -26,8 +27,14 @@ addEventListener('keydown', (e) => keys[e.code] = true);
 addEventListener('keyup', (e) => keys[e.code] = false);
 
 // add lights
-scene.add(new THREE.DirectionalLight('pink', 3));
-scene.add(new THREE.AmbientLight('white', 2));
+const sun = new THREE.DirectionalLight('#fff2e0', 3);
+sun.position.set(5, 10, 5);
+sun.castShadow = true;
+Object.assign(sun.shadow.camera, { left: -10, right: 10, top: 10, bottom: -10 });
+scene.add(sun);
+
+scene.add(new THREE.HemisphereLight('white', 'gray', 0.1)
+);
 
 // add floor
 const floor = new THREE.Mesh(
@@ -110,13 +117,13 @@ renderer.setAnimationLoop((time) => {
     camera.position.z = prevZ;
   }
 
-  // update animation
-  if (mixer) mixer.update(dt);
-  renderer.render(scene, camera);
-
   // cube spinning
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
   cube.updateMatrixWorld();
   cubeBox.copy(cube.geometry.boundingBox).applyMatrix4(cube.matrixWorld);
+
+  // update animation
+  if (mixer) mixer.update(dt);
+  renderer.render(scene, camera);
 });
