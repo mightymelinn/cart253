@@ -28,8 +28,8 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 
 | Week | Topic | Features Added | How It Uses the Concept |
 |---|---|---|---|
-| Oct 5 | 	⏱ Events | *Walk & look around* ✅, click to pick up an object | Keyboard, mouse, and click events |
-| Oct 19 | ☎️ Functions | *Import the house from UE5 (FBX)* ✅, scripted easy events (light flicker + sound) | Model loading and scares written as reusable functions |
+| Oct 5 | 	⏱ Events | *Walk & look around* ✅, *Import the house from UE5 (FBX)* ✅ | Keyboard, mouse, and click events |
+| Oct 19 | ☎️ Functions | *Press E to pick up an object ✅*, *scripted easy events (play ambience sound) ✅* | Model loading and scares written as reusable functions |
 | Oct 26 | 🔢Arrays | 3 items + progress UI, one event tied to each item | Items and scares stored in arrays |
 | Nov 2 | 🔁 Loops | Enemy follows the player, heartbeat gets louder as it gets closer | Game loop updates every frame |
 | Nov 9 | 💿 Data | Item notes & event text from JSON, ending letter + wishlist + email signup | Loading content from external data |
@@ -49,8 +49,34 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 |---|---|---|
 | Sep 29 | Getting started with three.js | [September 29, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#september-29-2026) | 
 | Oct 9 | FPS Movement + Exporting 3D model from UE5 | [October 9, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#october-09-2026) |
-| Oct 19 | Functions | _coming soon_ |
+| Oct 19 | Simple Game Events | [October 20, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#october-20-2026) |
 | Oct 26 | Arrays | _coming soon_ |
 | Nov 2 | Loops | _coming soon_ |
 | Nov 9 | Data | _coming soon_ |
 | Nov 16 | Polish | _coming soon_ |
+
+## My Cheat Sheets
+
+### Run the site locally
+
+Choose my-three-js-project folder in terminal 
+```
+cd C:\Users\chail\Documents\cart253\my-three-js-project
+```
+Run Vite
+```
+   npx vite
+```
+
+### Update github Website
+Run this on terminal in `my-three-js-project` 
+```
+npx vite build --base=./ --outDir ../docs\
+```
+Git stuff
+```
+git add -A
+git commit -m "[XXX]"
+git pull --rebase
+git push
+```
