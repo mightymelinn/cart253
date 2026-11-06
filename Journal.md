@@ -83,3 +83,36 @@ My plan changed a bit from my weekly milestones. I first planned to use a mouse 
 
 </div>
 </details>
+
+<details>
+<summary><b>Entry 5: November 6, 2026</b></summary>
+<br>
+
+## November 6, 2026
+I fell behind this week. So this entry includes my work from last week too, because I forgot to commit until today, so everything is in one big commit. I tried to export my house from UE5 since last week, but I couldn't figure out how to add collision to it. I could have asked Sabine right away when I got stuck, but I was busy with a game jam. So I decided to work on something else first (the Weeping Angel enemy). Making the outline for the pickup items also took longer than I expected, and that's part of why I forgot to commit.
+
+My first house export had a giant sky mesh (32768 units wide) that trapped the player inside it, so I re-exported without it. The hardest part was exporting my enemy with its animation, because the animation was made for a different skeleton. I haven't added the heartbeat sound yet.
+
+1. I split my code into separate files.
+
+**Code changes:** [88001cad3d488f28416cc4679a1502bd50e5dcf2](https://github.com/mightymelinn/cart253/commit/bd08a27fb2646669375361b0c2753c932c8bd3f1)
+
+> `world.js` has the scene, camera, lights, sound and models. `player.js` has the mouse look, walking and collision. `pickup.js` has the items and progress UI. `enemy.js` has the enemy. `main.js` only runs the game loop and calls the update function from each file in order. I use export and import to share stuff between files.
+
+2. I added 3 pickup items with a progress UI and a game end.
+
+> I made 3 items with a `for` loop and stored them in an items array. A counter at the top left shows how many items the player collected. Every time the player picks one up, it gets removed from the pickables array. When the array is empty, the game shows "Game End" text. Each item also has a collision box, which gets removed when the item is picked up.
+
+3. I changed how the pickup feedback works.
+
+> Items now get a white outline when the player is nearby. I check the distance from the player to each item and use OutlinePass to draw the outline. When the player looks at a nearby item, it glows like white color. The player can only pick up an item when it is close and being looked at using raycasting.
+
+4. I added a Weeping Angel enemy. It only moves when the player is not looking at.
+
+**Code changes:** [bd08a27fb2646669375361b0c2753c932c8bd3f1](https://github.com/mightymelinn/cart253/commit/88001cad3d488f28416cc4679a1502bd50e5dcf2)
+> Every frame, I check if the enemy is inside the camera's view with a frustum check. If it is seen, its animation and movement stop. If not, it walks toward the player using vectors. If it gets within 1 unit, the screen says "She caught you" and the game restarts after 1 second.
+
+**Next week:** I want to add collision to the whole house and start polishing!
+
+<br>
+</details>
