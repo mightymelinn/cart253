@@ -1,0 +1,57 @@
+import * as THREE from 'three';
+import { scene, camera, items, outlinePass } from './world.js';
+
+// Game mechanics: pick up objects
+
+const pickables = [...items]; // list of my pickable objects
+const range = 2.5;
+const raycaster = new THREE.Raycaster();
+raycaster.far = range;
+const screenCenter = new THREE.Vector2(0, 0);
+let lookedAt = null;
+
+// progress UI
+const total = pickables.length;
+const progress = document.createElement('div');
+progress.style.cssText = 'position:fixed; top:20px; left:20px; color:white; font:20px sans-serif;';
+document.body.appendChild(progress);
+
+function updateProgress() {
+  progress.textContent = `Items: ${total - pickables.length}/${total}`;
+}
+updateProgress();
+
+// game end
+function endGame() {
+  const message = document.createElement('div');
+  message.textContent = 'Game End';
+  message.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); color:white; font:48px sans-serif;';
+  document.body.appendChild(message);
+}
+
+addEventListener('keydown', (e) => {
+  if (e.code !== 'KeyE' || !lookedAt) return;
+
+  // remove obj after press E
+  scene.remove(lookedAt);
+  pickables.splice(pickables.indexOf(lookedAt), 1);
+  lookedAt = null;
+
+  if (pickables.length === 0) endGame();
+  updateProgress();
+});
+
+export function updatePickup() {
+  // outline items nearby
+  const nearby = pickables.filter((item) => camera.position.distanceTo(item.position) < range);
+  outlinePass.selectedObjects = nearby;
+
+  // more feedback when the player is looking at (will cahnge to text UI later)
+  if (lookedAt) lookedAt.material.emissive.setHex(0x000000);
+
+  raycaster.setFromCamera(screenCenter, camera);
+  const hit = raycaster.intersectObjects(nearby)[0];
+  lookedAt = hit ? hit.object : null;
+
+  if (lookedAt) lookedAt.material.emissive.setHex(0x666666);
+}
