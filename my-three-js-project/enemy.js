@@ -31,12 +31,39 @@ function isSeen() {
   return frustum.intersectsBox(enemyBox);
 }
 
+const enemySpeed = 5; // units per second
+const direction = new THREE.Vector3();
+
+// game over condition
+let caught = false;
+
+function catchPlayer() {
+  caught = true;
+  const message = document.createElement('div');
+  message.textContent = 'She caught you';
+  message.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); color:red; font:48px sans-serif;';
+  document.body.appendChild(message);
+  setTimeout(() => location.reload(), 3000); // setting a timeout to reload the page after 3 seconds for now
+}
+
 export function updateEnemy(dt) {
-  if (!enemy) return;
+  if (!enemy || caught) return;
+
+  // catch the player
+  direction.set(camera.position.x - enemy.position.x, 0, camera.position.z - enemy.position.z);
+  if (direction.length() < 1) {
+    catchPlayer();
+    return;
+  }
 
   // freeze when the player is looking
   if (isSeen()) return;
 
   // update animation
   if (mixer) mixer.update(dt);
+
+  // walk toward the player
+  direction.normalize();
+  enemy.position.addScaledVector(direction, enemySpeed * dt);
+  enemy.lookAt(camera.position.x, enemy.position.y, camera.position.z);
 }
