@@ -30,8 +30,8 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 |---|---|---|---|
 | Oct 5 | 	⏱ Events | *Walk & look around* ✅, *Import the house from UE5 (FBX)* ✅ | Keyboard, mouse, and click events |
 | Oct 19 | ☎️ Functions | *Press E to pick up an object ✅*, *scripted easy events (play ambience sound) ✅* | Model loading and scares written as reusable functions |
-| Oct 26 | 🔢Arrays | 3 items + progress UI, one event tied to each item | Items and scares stored in arrays |
-| Nov 2 | 🔁 Loops | Enemy follows the player, heartbeat gets louder as it gets closer | Game loop updates every frame |
+| Oct 26 | 🔢Arrays | *3 items + progress UI* ✅, ~~one event tied to each item~~ | Items and scares stored in arrays |
+| Nov 2 | 🔁 Loops | *Enemy follows the player* ✅, ~~heartbeat gets louder as it gets closer~~ | Game loop updates every frame |
 | Nov 9 | 💿 Data | Item notes & event text from JSON, ending letter + wishlist + email signup | Loading content from external data |
 
 ## Polish
@@ -50,8 +50,7 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 | Sep 29 | Getting started with three.js | [September 29, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#september-29-2026) | 
 | Oct 9 | FPS Movement + Exporting 3D model from UE5 | [October 9, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#october-09-2026) |
 | Oct 19 | Simple Game Events | [October 20, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#october-20-2026) |
-| Oct 26 | Arrays | _coming soon_ |
-| Nov 2 | Loops | _coming soon_ |
+| Nov 6 | Arrays + Loops | [November 6, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#november-6-2026) |
 | Nov 9 | Data | _coming soon_ |
 | Nov 16 | Polish | _coming soon_ |
 
