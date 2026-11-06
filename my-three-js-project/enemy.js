@@ -43,7 +43,7 @@ function catchPlayer() {
   message.textContent = 'She caught you';
   message.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); color:red; font:48px sans-serif;';
   document.body.appendChild(message);
-  setTimeout(() => location.reload(), 1000); // setting a timeout to reload the page after 1 second for now
+  //setTimeout(() => location.reload(), 1000); // setting a timeout to reload the page for 1 second
 }
 
 export function updateEnemy(dt) {

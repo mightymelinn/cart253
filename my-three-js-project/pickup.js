@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { scene, camera, items, outlinePass } from './world.js';
+import { scene, camera, items, outlinePass, solidBoxes } from './world.js';
 
 // Game mechanics: pick up objects
 
@@ -34,6 +34,7 @@ addEventListener('keydown', (e) => {
 
   // remove obj after press E
   scene.remove(lookedAt);
+  solidBoxes.splice(solidBoxes.indexOf(lookedAt.userData.box), 1);
   pickables.splice(pickables.indexOf(lookedAt), 1);
   lookedAt = null;
 

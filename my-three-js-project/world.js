@@ -50,14 +50,20 @@ scene.add(sun);
 
 scene.add(new THREE.HemisphereLight('white', 'gray', 0.1));
 
-// add floor
-const floor = new THREE.Mesh(
-  new THREE.BoxGeometry(20, 0.1, 20),
-  new THREE.MeshStandardMaterial({ color: 'gray' })
-);
-floor.position.y = -0.05;
-floor.receiveShadow = true;
-scene.add(floor);
+// add house from UE5
+new GLTFLoader().load('L_house.glb', (gltf) => {
+  const house = gltf.scene;
+  house.traverse((obj) => {
+    obj.castShadow = true;
+    obj.receiveShadow = true;
+  });
+  scene.add(house);
+
+  console.log('house size:', new THREE.Box3().setFromObject(house).getSize(new THREE.Vector3()).toArray());
+});
+
+// add collision
+export const solidBoxes = [];
 
 // add pickup items
 export const items = [];
@@ -76,10 +82,9 @@ for (const pos of itemPositions) {
   item.castShadow = true;
   scene.add(item);
   items.push(item);
+  item.userData.box = new THREE.Box3().setFromObject(item);
+  solidBoxes.push(item.userData.box);
 }
-
-// add collision
-export const solidBoxes = [];
 
 export function updateWorld(dt) {
 }
