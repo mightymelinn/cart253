@@ -1,6 +1,7 @@
 import { scene, camera, renderer, composer, updateWorld } from './world.js';
 import { updatePlayer } from './player.js';
 import { updatePickup } from './pickup.js';
+import { updateEnemy } from './enemy.js';
 
 // This file will be the main entry of the game. It will calls the other file in order.
 
@@ -13,6 +14,7 @@ renderer.setAnimationLoop((time) => {
 
   updateWorld(dt);
   updatePlayer(dt);
+  updateEnemy(dt);
   updatePickup();
 
     composer.render();
