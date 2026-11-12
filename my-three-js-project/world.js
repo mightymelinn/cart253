@@ -53,13 +53,19 @@ scene.add(new THREE.HemisphereLight('white', 'gray', 0.1));
 // add house from UE5
 new GLTFLoader().load('L_house.glb', (gltf) => {
   const house = gltf.scene;
+  scene.add(house);
+  house.updateMatrixWorld(true);
+
   house.traverse((obj) => {
+    if (!obj.isMesh) return;
     obj.castShadow = true;
     obj.receiveShadow = true;
-  });
-  scene.add(house);
 
-  console.log('house size:', new THREE.Box3().setFromObject(house).getSize(new THREE.Vector3()).toArray());
+    // add collision TEST
+    const box = new THREE.Box3().setFromObject(obj);
+    if (box.max.y - box.min.y < 0.3) return;
+    solidBoxes.push(box);
+  });
 });
 
 // add collision
