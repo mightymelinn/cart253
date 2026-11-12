@@ -58,10 +58,10 @@ function collideWithHouse() {
   }
 }
 
-// footstep sound
+// footstep sfx CHANGE LATER
 const footsteps = new Audio('ES_Footsteps.mp3');
 footsteps.loop = true;
-const hearDistance = 10; // CHANGE LATER
+const hearDistance = 50; // CHANGE LATER
 
 const enemySpeed = 3; // units per second CHANGE LATER
 const direction = new THREE.Vector3();

@@ -66,5 +66,18 @@ export function updatePickup() {
   const hit = raycaster.intersectObjects(nearby)[0];
   lookedAt = hit ? hit.object : null;
 
+  // show white glow
   if (lookedAt) lookedAt.material.emissive.setHex(0x666666);
+
+  // show text UI
+  if (lookedAt) {
+    textPosition.copy(lookedAt.position);
+    textPosition.y += 0.5;
+    textPosition.project(camera);
+    pickupText.style.left = (textPosition.x + 1) / 2 * innerWidth + 'px';
+    pickupText.style.top = (1 - textPosition.y) / 2 * innerHeight + 'px';
+    pickupText.style.display = 'block';
+  } else {
+    pickupText.style.display = 'none';
+  }
 }
