@@ -5,6 +5,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { Octree } from 'three/addons/math/Octree.js';
 
 // For scene, camera, render, lights, floor, anything related to environment.
 
@@ -50,26 +51,24 @@ scene.add(sun);
 
 scene.add(new THREE.HemisphereLight('white', 'gray', 0.1));
 
+// add collision
+export const solidBoxes = [];
+export const worldOctree = new Octree();
+
 // add house from UE5
 new GLTFLoader().load('L_house.glb', (gltf) => {
   const house = gltf.scene;
   scene.add(house);
-  house.updateMatrixWorld(true);
 
   house.traverse((obj) => {
     if (!obj.isMesh) return;
     obj.castShadow = true;
     obj.receiveShadow = true;
-
-    // add collision TEST
-    const box = new THREE.Box3().setFromObject(obj);
-    if (box.max.y - box.min.y < 0.3) return;
-    solidBoxes.push(box);
   });
-});
 
-// add collision
-export const solidBoxes = [];
+  // add collision TEST
+  worldOctree.fromGraphNode(house);
+});
 
 // add pickup items
 export const items = [];

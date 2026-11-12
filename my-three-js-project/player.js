@@ -1,8 +1,7 @@
 import * as THREE from 'three';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
-import { camera, ambience, solidBoxes } from './world.js';
-
-// Player interactions + controls will go here
+import { Capsule } from 'three/addons/math/Capsule.js';
+import { camera, ambience, solidBoxes, worldOctree } from './world.js';
 
 // fps camera control
 export const controls = new PointerLockControls(camera, document.body);
@@ -28,6 +27,20 @@ function hitSomething() {
   return solidBoxes.some((box) => playerBox.intersectsBox(box));
 }
 
+// check house collision
+const playerCapsule = new Capsule(new THREE.Vector3(), new THREE.Vector3(), 0.35);
+
+function collideWithHouse() {
+  playerCapsule.start.set(camera.position.x, camera.position.y - 1.2, camera.position.z);
+  playerCapsule.end.set(camera.position.x, camera.position.y, camera.position.z);
+
+  const result = worldOctree.capsuleIntersect(playerCapsule);
+  if (result) {
+    camera.position.x += result.normal.x * result.depth;
+    camera.position.z += result.normal.z * result.depth;
+  }
+}
+
 const speed = 3; // units per second
 
 export function updatePlayer(dt) {
@@ -41,6 +54,8 @@ export function updatePlayer(dt) {
   if (keys.KeyS) controls.moveForward(-step);
   if (keys.KeyD) controls.moveRight(step);
   if (keys.KeyA) controls.moveRight(-step);
+
+  collideWithHouse();
 
   if (hitSomething()) {
     camera.position.x = prevX;
