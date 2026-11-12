@@ -116,3 +116,39 @@ My first house export had a giant sky mesh (32768 units wide) that trapped the p
 
 <br>
 </details>
+
+<details>
+<summary><b>Entry 6: November 12, 2026</b></summary>
+<br>
+
+## November 12, 2026
+This week was CRAZY. I realized my plan changed a lot because I wrote it from the perspective of someone who uses a game engine when I plan each week's milestone. In UE5, collision, line traces and NavMesh are already built in, but in three.js I have to build them myself. Because of that, I didn't get to finish the ending letter that I planned for this week.
+
+1. I added collision to the whole house using an Octree.
+
+**Code changes:** [5495e0630e24a4b4f1017973298b4ccd8e50a608](https://github.com/mightymelinn/cart253/commit/5495e0630e24a4b4f1017973298b4ccd8e50a608)
+> This one was very time-consuming because I tried lots of approach. When I searched on YouTube, I mostly found voxel tutorials and Rapier.js, so I used the official three.js FPS example ([games_fps](https://threejs.org/examples/?q=fps#games_fps)) as my reference instead. So `worldOctree.fromGraphNode()` turns my house model into collision data that uses the real shape of the house. The player is a capsule like in game engines. Every frame, `capsuleIntersect()` checks if the capsule touches a wall.
+
+2. I added collision to the enemy so she can't walk through walls.
+
+**Code changes:** [464fbd65e62b4be7b0ad5fb96777d21db8c4192a](https://github.com/mightymelinn/cart253/commit/464fbd65e62b4be7b0ad5fb96777d21db8c4192a)
+> The enemy uses the same capsule and Octree as the player. BUT it looks weird as the root motion in animation makes the animation also pushes her body forward, away from `enemy.position`. I debugged by creating red outline in the enemy's capsule.
+
+3. I added line of sight to the enemy using raycasting.
+
+> Before that, the enemy froze whenever she was on the screen. Now I also shoot a ray from the player's eyes to her chest using `rayIntersect()`. If the ray hits a wall before it reaches her, she is hidden, so she keeps moving. Same idea as a Line Trace in UE5. I love the outcome that it somehow disturbing and I think I can implement it more.
+
+4. I added footstep sound to the enemy.
+
+**Code changes:** [f213b38c7347ab4024185a3dfc91bfcf1f8f7292](https://github.com/mightymelinn/cart253/commit/f213b38c7347ab4024185a3dfc91bfcf1f8f7292)
+> The footsteps get louder when she gets closer using [Positional Audio](https://www.youtube.com/watch?v=9gBW8XEyMP8). I use `THREE.MathUtils.clamp()` to change her movement into a volume between 0 and 1. The footsteps only play while she moves, and stop when the player looks at her.
+
+5. I implemented pickup feedback
+
+**Code changes:** [a622f44968fc0ab0af31a6e5363ed9bcb99d510e](https://github.com/mightymelinn/cart253/commit/a622f44968fc0ab0af31a6e5363ed9bcb99d510e)
+> Each item plays a sound when it's picked up. When the player looks at an item, "Press E to pick up" shows using `project(camera)` to turn the item's 3D position into a 2D position on the screen, then move an HTML text there every frame.
+
+**Next week:** The enemy movement still weird since she just slide with the wall. I will look for the best practice for enemy movement. I also want to add the ending letter with a Steam wishlist button, and move my item notes into a JSON file for the Data milestone. And then should start polishing the whole environment!
+
+<br>
+</details>
