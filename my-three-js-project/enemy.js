@@ -13,31 +13,35 @@ new GLTFLoader().load('ANMS_HorrorMaidenMoveWalkJitteryForward.glb', (gltf) => {
   enemy.traverse((obj) => obj.castShadow = true);
   scene.add(enemy);
 
-    // debug: show the enemy's real collision position
-  const marker = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.35, 0.35, 1.2),
-    new THREE.MeshBasicMaterial({ color: 'red', wireframe: true })
-  );
-  marker.position.y = 1;
-  enemy.add(marker);
-
   if (gltf.animations.length) {
     mixer = new THREE.AnimationMixer(enemy);
     mixer.clipAction(gltf.animations[0]).play();
   }
 });
 
-// check if the enemy is on screen
+// check if the player can see the enemy
 const frustum = new THREE.Frustum();
 const viewMatrix = new THREE.Matrix4();
 const enemyBox = new THREE.Box3();
+const ray = new THREE.Ray();
+const enemyChest = new THREE.Vector3();
 
 function isSeen() {
+  // check enemy on screen
   camera.updateMatrixWorld();
   viewMatrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
   frustum.setFromProjectionMatrix(viewMatrix);
   enemyBox.setFromObject(enemy);
-  return frustum.intersectsBox(enemyBox);
+  if (!frustum.intersectsBox(enemyBox)) return false;
+
+  // check the wall blocking enemy
+  enemyChest.set(enemy.position.x, enemy.position.y + 1.2, enemy.position.z);
+  ray.origin.copy(camera.position);
+  ray.direction.subVectors(enemyChest, camera.position).normalize();
+
+  const hit = worldOctree.rayIntersect(ray);
+  const distanceToEnemy = camera.position.distanceTo(enemyChest);
+  return !(hit && hit.distance < distanceToEnemy);
 }
 
 // check house collision
@@ -66,7 +70,7 @@ function catchPlayer() {
   message.textContent = 'She caught you';
   message.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); color:red; font:48px sans-serif;';
   document.body.appendChild(message);
-  //setTimeout(() => location.reload(), 1000); // setting a timeout to reload the page for 1 second CHANGEER
+  //setTimeout(() => location.reload(), 1000); // setting a timeout to reload the page for 1 second CHANGE LATER
 }
 
 export function updateEnemy(dt) {
