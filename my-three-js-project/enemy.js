@@ -58,7 +58,12 @@ function collideWithHouse() {
   }
 }
 
-const enemySpeed = 7; // units per second CHANGE LATER
+// footstep sound
+const footsteps = new Audio('ES_Footsteps.mp3');
+footsteps.loop = true;
+const hearDistance = 10; // CHANGE LATER
+
+const enemySpeed = 3; // units per second CHANGE LATER
 const direction = new THREE.Vector3();
 
 // game over condition
@@ -66,6 +71,7 @@ let caught = false;
 
 function catchPlayer() {
   caught = true;
+  footsteps.pause();
   const message = document.createElement('div');
   message.textContent = 'She caught you';
   message.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); color:red; font:48px sans-serif;';
@@ -78,13 +84,23 @@ export function updateEnemy(dt) {
 
   // catch the player
   direction.set(camera.position.x - enemy.position.x, 0, camera.position.z - enemy.position.z);
-  if (direction.length() < 1) {
+  const distance = direction.length();
+  if (distance < 1) {
     catchPlayer();
     return;
   }
 
+  // footsteps get louder based on distance
+  footsteps.volume = THREE.MathUtils.clamp(1 - distance / hearDistance, 0, 1);
+
   // freeze when the player is looking
-  if (isSeen()) return;
+  if (isSeen()) {
+    footsteps.pause();
+    return;
+  }
+
+  // footsteps play
+  if (footsteps.paused) footsteps.play().catch(() => {});
 
   // update animation
   if (mixer) mixer.update(dt);

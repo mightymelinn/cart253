@@ -10,6 +10,16 @@ raycaster.far = range;
 const screenCenter = new THREE.Vector2(0, 0);
 let lookedAt = null;
 
+// pickup sfx
+const pickupSound = new Audio('ES_Pickup.mp3');
+
+// pickup UI
+const pickupText = document.createElement('div');
+pickupText.textContent = 'Press E to pick up';
+pickupText.style.cssText = 'position:fixed; transform:translate(-50%, -100%); color:white; font:16px sans-serif; display:none; pointer-events:none;';
+document.body.appendChild(pickupText);
+const textPosition = new THREE.Vector3();
+
 // progress UI
 const total = pickables.length;
 const progress = document.createElement('div');
@@ -34,6 +44,8 @@ addEventListener('keydown', (e) => {
 
   // remove obj after press E
   scene.remove(lookedAt);
+  pickupSound.currentTime = 0;
+  pickupSound.play();
   solidBoxes.splice(solidBoxes.indexOf(lookedAt.userData.box), 1);
   pickables.splice(pickables.indexOf(lookedAt), 1);
   lookedAt = null;
