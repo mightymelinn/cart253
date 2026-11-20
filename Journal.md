@@ -152,3 +152,35 @@ This week was CRAZY. I realized my plan changed a lot because I wrote it from th
 
 <br>
 </details>
+
+<details>
+<summary><b>Entry 7: November 19, 2026</b></summary>
+<br>
+
+## November 19, 2026
+I took a few days to rest after feeling sick last week, then focused on wrapping things up today. This session went smoother than last week because most of the new things were HTML and CSS, which I already know from my other classes. I also made some decisions to keep the scope small. I left blocking the door for later, because I'm going to update the house model with a bigger area and a door anyway. For the main menu, I thought about making the player scroll down to start, but it would cause problems with the scroll wheel during gameplay, so I went with "click anywhere to begin" instead.
+
+1. I set the spawn points for the player, the enemy and the items.
+
+**Code changes:** [bd868d526b31025c9bf163f972d9c8ad9fc8e2fb](https://github.com/mightymelinn/cart253/commit/bd868d526b31025c9bf163f972d9c8ad9fc8e2fb)
+> The player and the enemy used to spawn outside the house. I added `window.camera = camera;` into player.js and checked `camera.position` in the console to get the x and z numbers. The player and items use these numbers directly.
+
+2. I created dialogues using JSON file
+
+**Code changes:** [6bee586d4acee70611f0e03a764cd641048423f8](https://github.com/mightymelinn/cart253/commit/6bee586d4acee70611f0e03a764cd641048423f8)
+> Each item now has a name and a note in `items.json`. I load the file with `fetch()`. When the player looks at an item, the text shows its name. When they pick it up, its note shows at the bottom of the screen for 4 seconds.
+
+3. I added an ending letter with a Steam wishlist button.
+
+**Code changes:** [63901e482c31945cc3cd03a52692e3036cdeee08](https://github.com/mightymelinn/cart253/commit/63901e482c31945cc3cd03a52692e3036cdeee08)
+> When the player collects all 3 items, a paper-style letter pops up over the game. The mouse gets unlocked so the player can click the wishlist button, and the enemy stops moving. I made a shared `game` object with `started` and `ended`, so every file can check if the game is running.
+
+4. I added a main menu.
+
+**Code changes:** [042dc5b4c9688e79d64e197fab0a271d9c9301ff](https://github.com/mightymelinn/cart253/commit/042dc5b4c9688e79d64e197fab0a271d9c9301ff)
+> The game now opens on a title screen. The enemy waits until the player clicks to start. I made `ui.js` for everything on screen that isn't the 3D world, like the title screen, the click to start and the ending letter.
+
+**Next week:** I'm not satisfied with how the enemy moves yet. I want to look into ways to make her movement feel better. I want to update the house model with a bigger area and a door, then fix the spawn points to fit the new house. AND FINALLY POLISH!  
+
+<br>
+</details>
