@@ -3,19 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>I against Me</title>
-    <style>
-      body { margin: 0; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+
+  .breathing {
+    animation: breathe 2.5s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+</style>
   </head>
   <body>
-    <div id="menu" style="position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('IAM_Capsule.jpg') center / cover; color:#e8e0d0; font-family:Georgia, serif; text-align:center; z-index:20; cursor:pointer;">
+    <div id="menu" style="position:fixed; inset:0; display:flex; flex-direction:column; align-items:flex-start; padding-left:8vw; justify-content:center; background:linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('IAM_Capsule.jpg') center / cover; color:#e8e0d0; font-family:'Special Elite', monospace; text-align:center; z-index:20; cursor:pointer;">
       <img src="IAM_Logo.png" alt="I Against Me" style="width:min(640px, 85vw); margin-bottom:16px;">
       <p style="margin:0 0 40px; text-shadow:0 2px 8px black;">Find 3 items. Don't let her catch you.</p>
-      <p style="margin:0; font-size:20px; text-shadow:0 2px 8px black;">Click anywhere to begin</p>
+      <p class="breathing" style="margin:0; font-size:20px; text-shadow:0 2px 8px black;">Click anywhere to begin</p>
       <p style="margin-top:32px; font:14px sans-serif; opacity:0.7; text-shadow:0 2px 8px black;">Mouse to look | WASD to move | E to pick up</p>
     </div>
 
-    <div id="letter" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) rotate(-1deg); width:min(420px, 90vw); padding:40px; background:#f3ead7; color:#2b2118; font-family:Georgia, serif; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,0.6); z-index:10;">
+    <div id="letter" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) rotate(-1deg); width:min(420px, 90vw); padding:40px; background:#f3ead7; color:#2b2118; font-family:Georgia, serif; text-align:left; box-shadow:0 10px 40px rgba(0,0,0,0.6); z-index:10;">
       <h1 style="margin-top:0;">I Against Me</h1>
       <p>You have finished a short experience of I Against Me.</p>
       <p>Thank you so much for playing!!</p>
