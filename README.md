@@ -39,8 +39,6 @@ Hi! I'm Melinn, a first-year Computation Arts student specializing in game desig
 | :--- | :--- |
 | **Project** | **[THREE.JS WEBSITE](https://mightymelinn.github.io/cart253/)** |
 | **Status** | 🟢 Active Development |
-| **Latest Update** | Added basic geometry (spinning cube, draggable cylinder) |
-| **Planned** | Implement FPS camera movement and UE5 scene exports |
 
 
 <div align="center">
