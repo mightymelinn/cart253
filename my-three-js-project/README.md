@@ -20,8 +20,7 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 | ✅ Must have | House and models imported from UE5 (FBX) |
 | ✅ Must have | 3 collectible items with progress UI (0/3) |
 | ✅ Must have | Enemy that always follows the player |
-| ✅ Must have | 3 scripted horror events (one per item) |
-| ✅ Must have | Ending letter with Steam wishlist + email signup |
+| ✅ Must have | Ending letter with Steam wishlist |
 | ⭐ If time allows | Fail state when the enemy catches the player? |
 
 ## Weekly Milestones
@@ -32,7 +31,7 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 | Oct 19 | ☎️ Functions | *Press E to pick up an object ✅*, *scripted easy events (play ambience sound) ✅* | Model loading and scares written as reusable functions |
 | Oct 26 | 🔢Arrays | *3 items + progress UI* ✅, ~~one event tied to each item~~ | Items and scares stored in arrays |
 | Nov 2 | 🔁 Loops | *Enemy follows the player* ✅, ~~heartbeat gets louder as it gets closer~~ | Game loop updates every frame |
-| Nov 9 | 💿 Data | Item notes & event text from JSON, ending letter + wishlist + email signup | Loading content from external data |
+| Nov 9 | 💿 Data | *Item notes & event text from JSON* ✅, *ending letter + wishlist* ✅| Loading content from external data |
 
 ## Polish
 
@@ -51,8 +50,7 @@ Everything is built in **one ongoing project**. Each week adds new features usin
 | Oct 9 | FPS Movement + Exporting 3D model from UE5 | [October 9, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#october-09-2026) |
 | Oct 19 | Simple Game Events | [October 20, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#october-20-2026) |
 | Nov 6 | Arrays + Loops | [November 6, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#november-6-2026) |
-| Nov 9 | Data | _coming soon_ |
-| Nov 16 | Polish | _coming soon_ |
+| Nov 20 | Data | [November 20, 2026](https://github.com/mightymelinn/cart253/blob/main/Journal.md#november-19-2026) |
 
 ## My Cheat Sheets
 
