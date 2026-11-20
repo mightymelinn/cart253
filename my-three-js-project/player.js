@@ -1,17 +1,12 @@
 import * as THREE from 'three';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import { Capsule } from 'three/addons/math/Capsule.js';
-import { camera, ambience, solidBoxes, worldOctree, game } from './world.js';
+import { camera, solidBoxes, worldOctree } from './world.js';
 
 //window.camera = camera;
 
 // fps camera control
 export const controls = new PointerLockControls(camera, document.body);
-document.addEventListener('click', () => {
-  if (game.ended) return;
-  controls.lock();
-  ambience.play();
-});
 
 // keyboard controls
 const keys = {};

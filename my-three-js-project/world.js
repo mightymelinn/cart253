@@ -35,9 +35,7 @@ composer.addPass(outlinePass);
 
 composer.addPass(new OutputPass());
 
-// add sounds
-
-// ambient sound
+// add ambient sound
 export const ambience = new Audio('ES_Fluxure - Ethan Sloan.mp3');
 ambience.loop = true;
 ambience.volume = 0.3;
@@ -56,7 +54,7 @@ export const solidBoxes = [];
 export const worldOctree = new Octree();
 
 // add game state
-export const game = { ended: false };
+export const game = { started: false, ended: false };
 
 // add house from UE5
 new GLTFLoader().load('L_house.glb', (gltf) => {
@@ -69,7 +67,7 @@ new GLTFLoader().load('L_house.glb', (gltf) => {
     obj.receiveShadow = true;
   });
 
-  // add collision TEST
+  // add collision
   worldOctree.fromGraphNode(house);
 });
 

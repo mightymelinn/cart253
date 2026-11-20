@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { scene, camera, items, outlinePass, solidBoxes, game } from './world.js';
-import { controls } from './player.js';
+import { scene, camera, items, outlinePass, solidBoxes } from './world.js';
+import { showLetter } from './ui.js';
 
 // Game mechanics: pick up 3 objects
 
@@ -53,9 +53,7 @@ updateProgress();
 
 // game end
 function endGame() {
-  game.ended = true;
-  controls.unlock();
-  document.getElementById('letter').style.display = 'block';
+  showLetter();
 }
 
 addEventListener('keydown', (e) => {
