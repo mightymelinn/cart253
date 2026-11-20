@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { Capsule } from 'three/addons/math/Capsule.js';
-import { scene, camera, worldOctree } from './world.js';
+import { scene, camera, worldOctree, game } from './world.js';
 
 let enemy = null;
 let mixer = null;
@@ -81,6 +81,11 @@ function catchPlayer() {
 
 export function updateEnemy(dt) {
   if (!enemy || caught) return;
+    // stop when the game ended
+  if (game.ended) {
+    footsteps.pause();
+    return;
+  }
 
   // catch the player
   direction.set(camera.position.x - enemy.position.x, 0, camera.position.z - enemy.position.z);

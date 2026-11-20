@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { scene, camera, items, outlinePass, solidBoxes } from './world.js';
+import { scene, camera, items, outlinePass, solidBoxes, game } from './world.js';
+import { controls } from './player.js';
 
 // Game mechanics: pick up objects
 
@@ -33,10 +34,9 @@ updateProgress();
 
 // game end
 function endGame() {
-  const message = document.createElement('div');
-  message.textContent = 'Game End';
-  message.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); color:white; font:48px sans-serif;';
-  document.body.appendChild(message);
+  game.ended = true;
+  controls.unlock();
+  document.getElementById('letter').style.display = 'block';
 }
 
 addEventListener('keydown', (e) => {

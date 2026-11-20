@@ -55,6 +55,9 @@ scene.add(new THREE.HemisphereLight('white', 'gray', 0.1));
 export const solidBoxes = [];
 export const worldOctree = new Octree();
 
+// add game state
+export const game = { ended: false };
+
 // add house from UE5
 new GLTFLoader().load('L_house.glb', (gltf) => {
   const house = gltf.scene;
