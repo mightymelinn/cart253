@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { scene, camera, items, outlinePass, solidBoxes, game } from './world.js';
 import { controls } from './player.js';
 
-// Game mechanics: pick up objects
+// Game mechanics: pick up 3 objects
 
 const pickables = [...items]; // list of my pickable objects
 const range = 2.5;
@@ -10,6 +10,25 @@ const raycaster = new THREE.Raycaster();
 raycaster.far = range;
 const screenCenter = new THREE.Vector2(0, 0);
 let lookedAt = null;
+
+// items.json data
+let itemData = [];
+fetch('items.json')
+  .then((response) => response.json())
+  .then((data) => itemData = data);
+
+// show dialogue text when picking up items
+const noteText = document.createElement('div');
+noteText.style.cssText = 'position:fixed; bottom:60px; left:50%; transform:translateX(-50%); color:white; font:20px Georgia, serif; text-align:center; display:none; pointer-events:none;';
+document.body.appendChild(noteText);
+let noteTimer;
+
+function showNote(text) {
+  noteText.textContent = text;
+  noteText.style.display = 'block';
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(() => noteText.style.display = 'none', 4000);
+}
 
 // pickup sfx
 const pickupSound = new Audio('ES_Pickup.mp3');
@@ -44,6 +63,8 @@ addEventListener('keydown', (e) => {
 
   // remove obj after press E
   scene.remove(lookedAt);
+  const data = itemData[items.indexOf(lookedAt)];
+  if (data) showNote(data.note);
   pickupSound.currentTime = 0;
   pickupSound.play();
   solidBoxes.splice(solidBoxes.indexOf(lookedAt.userData.box), 1);
@@ -71,6 +92,8 @@ export function updatePickup() {
 
   // show text UI
   if (lookedAt) {
+    const data = itemData[items.indexOf(lookedAt)];
+    pickupText.textContent = data ? `Press E to pick up ${data.name}` : 'Press E to pick up';
     textPosition.copy(lookedAt.position);
     textPosition.y += 0.5;
     textPosition.project(camera);
