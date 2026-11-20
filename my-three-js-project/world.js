@@ -13,7 +13,7 @@ import { Octree } from 'three/addons/math/Octree.js';
 export const scene = new THREE.Scene();
 scene.background = new THREE.Color('black');
 export const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
-camera.position.set(0, 1.6, 3);
+camera.position.set(14.64, 1.6, -1.01);
 
 export const renderer = new THREE.WebGLRenderer();
 renderer.setSize(innerWidth, innerHeight);
@@ -73,9 +73,9 @@ new GLTFLoader().load('L_house.glb', (gltf) => {
 // add pickup items
 export const items = [];
 const itemPositions = [
-  [2, 0.25, 0],
-  [-3, 0.25, -3],
-  [0, 0.25, -7],
+  [8.29, 0.25, -1.30],
+  [9.80, 0.25, 4.87],
+  [14.38, 0.25, 1.90],
 ];
 
 for (const pos of itemPositions) {

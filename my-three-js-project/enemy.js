@@ -9,7 +9,7 @@ let mixer = null;
 // add enemy model
 new GLTFLoader().load('ANMS_HorrorMaidenMoveWalkJitteryForward.glb', (gltf) => {
   enemy = gltf.scene;
-  enemy.position.set(0, 0, -5);
+  enemy.position.set(13.85, 0, -3.87);
   enemy.traverse((obj) => obj.castShadow = true);
   scene.add(enemy);
 

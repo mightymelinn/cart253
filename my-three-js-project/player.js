@@ -3,6 +3,8 @@ import { PointerLockControls } from 'three/addons/controls/PointerLockControls.j
 import { Capsule } from 'three/addons/math/Capsule.js';
 import { camera, ambience, solidBoxes, worldOctree } from './world.js';
 
+//window.camera = camera;
+
 // fps camera control
 export const controls = new PointerLockControls(camera, document.body);
 document.addEventListener('click', () => {
