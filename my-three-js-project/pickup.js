@@ -40,10 +40,11 @@ pickupText.style.cssText = 'position:fixed; transform:translate(-50%, -100%); co
 document.body.appendChild(pickupText);
 const textPosition = new THREE.Vector3();
 
-// progress UI
+// progress UI (hidden until the game starts)
 const total = pickables.length;
 const progress = document.createElement('div');
-progress.style.cssText = 'position:fixed; top:20px; left:20px; color:white; font:20px sans-serif;';
+progress.id = 'progress';
+progress.style.cssText = 'position:fixed; top:20px; left:20px; color:white; font:20px sans-serif; display:none;';
 document.body.appendChild(progress);
 
 function updateProgress() {
